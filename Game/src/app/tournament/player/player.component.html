@@ -1,0 +1,19 @@
+<h2>Joueurs</h2>
+<div class="form-group col-md-6">
+  <label for="inputEmail4">Nom du participant</label>
+  <input #box (keyup.enter)="addPlayer(box.value)" class="form-control">
+</div>
+<div class="players">
+  <div class="container">    
+    <div class="row">
+      <div class="col-sm-4" *ngFor="let player of players">
+        <div class="playerContainer" type="button">
+          <div class="badge">{{player.id}}</div>
+          <div class="name">{{player.name}}</div>
+          <div class="badgeOpp" (click)="removePlayer(player.id)">X</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,73 @@
+/* playersComponent's private CSS styles */
+  .players .playerContainer {
+    flex: 1;
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    margin: .5em;
+    padding: 0;
+    border-radius: 4px;
+    display: flex;
+    align-items: stretch;
+    height: 1.8em;
+  }
+  
+  .players .playerContainer:hover {
+    color: #2c3a41;
+    background-color: #e6e6e6;
+    left: .1em;
+  }
+  
+  .players .playerContainer:active {
+    background-color: #525252;
+    color: #fafafa;
+  }
+  
+  .players .playerContainerutton.selected {
+    background-color: black;
+    color: white;
+  }
+  
+  .players .playerContainerutton.selected:hover {
+    background-color: #505050;
+    color: white;
+  }
+  
+  .players .playerContainer.selected:active {
+    background-color: black;
+    color: white;
+  }
+  
+  .players .badge {
+    font-size: small;
+    color: white;
+    padding: 0.7em 0.7em 0 0.7em;
+    background-color: #405061;
+    line-height: 1em;
+    margin-right: .8em;
+    border-radius: 4px 0 0 4px;
+  }
+  .players .badgeOpp {
+    font-size: small;
+    margin-left: auto; 
+    margin-right: 0;
+    color: white;
+    padding: 0.7em 0.7em 0 0.7em;
+    background-color: #bb6400;
+    line-height: 1em;
+    border-radius: 0px 4px 4px 0px;
+  }
+  
+  
+  .players .name {
+    align-self: center;
+  }
+  
+
+  
+  /*
+  Copyright Google LLC. All Rights Reserved.
+  Use of this source code is governed by an MIT-style license that
+  can be found in the LICENSE file at https://angular.io/license
+  */

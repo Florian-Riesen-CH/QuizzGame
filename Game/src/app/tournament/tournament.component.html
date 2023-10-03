@@ -1,0 +1,16 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-8">
+            <app-player [players]="players"></app-player>
+        </div>
+        <div class="col-sm-4">
+            <app-ranking [teams]="teams"></app-ranking>
+        </div>
+    </div>
+    <div class="row">
+        <div class="offset-md-6 text-right top-buffer bot-buffer">
+            <button (click)="genereateTeam()" class="btn btn-dark">Créer équipes</button>
+        </div>
+    </div>
+    <app-team [teams]="teams" (teamsChange)="GetData($event)"></app-team>
+</div>
