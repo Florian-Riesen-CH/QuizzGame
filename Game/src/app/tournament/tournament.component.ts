@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { Player, Team } from '../player';
+import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Component({
   selector: 'app-tournament',
@@ -10,13 +11,18 @@ import { Player, Team } from '../player';
 export class TournamentComponent {
   players: Player[] = [];
   teams: Team[] = [];
-  constructor(private cookieService: CookieService){
-    if (this.cookieService.check('playersList')) {
-      this.players = JSON.parse(this.cookieService.get('playersList'));
-    }
-    if (this.cookieService.check('teamsList')) {
-      this.teams = JSON.parse(this.cookieService.get('teamsList'));
-    }
+  constructor(private db: AngularFireDatabase){
+  }
+
+  refPlayer = this.db.list<Player>("players");
+  refTeams = this.db.list<Team>("teams");
+  ngOnInit():void{
+    this.refPlayer.valueChanges().subscribe((data) =>{
+      this.players = data as Player[];
+    }) 
+    this.refTeams.valueChanges().subscribe((data) =>{
+      this.teams = data as Team[];
+    }) 
   }
 
   GetData(newItem: Team[]){
@@ -47,7 +53,12 @@ export class TournamentComponent {
     if(randomPlayer.length % 2 !== 0) {
         this.teams[this.teams.length - 1].players.push(randomPlayer[randomPlayer.length - 1]);
     }
-    this.cookieService.set('teamsList', JSON.stringify(this.teams));
+    
+    this.refTeams.remove();
+    this.teams.forEach(element => {
+      this.refTeams.push(element);
+    });
+    //this.cookieService.set('teamsList', JSON.stringify(this.teams));
   }
   shuffleArray(array: Player[]):Player[] {
     var m = array.length, t, i;
