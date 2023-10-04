@@ -35,6 +35,7 @@ export class PlayerComponent {
   ngOnInit():void{
     const ref = this.db.list("players");
     ref.valueChanges().subscribe((data) =>{
+      console.log(data);
       this.players = data as Player[];
     }) 
   }
@@ -43,7 +44,15 @@ export class PlayerComponent {
     this.players = this.players.filter(function( obj ) {
       return obj.id !== id;
     });
+    this.ref.remove();
+    this.players.forEach(element => {
+      this.ref.push(element);
+    });
+    
+
     //this.cookieService.set('playersList', JSON.stringify(this.players));
+
+  
 
   }
 
