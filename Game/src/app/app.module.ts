@@ -10,6 +10,11 @@ import { TournamentComponent } from './tournament/tournament.component'
 import { PlayerComponent } from './tournament/player/player.component';
 import { RankingComponent } from './tournament/ranking/ranking.component';
 import { TeamComponent } from './tournament/team/team.component';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { AngularFireStorageModule } from '@angular/fire/compat/storage';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -19,12 +24,16 @@ import { TeamComponent } from './tournament/team/team.component';
     TournamentComponent,
     PlayerComponent,
     RankingComponent,
-    TeamComponent
+    TeamComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireDatabaseModule,
+    AngularFirestoreModule,
+    AngularFireStorageModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
