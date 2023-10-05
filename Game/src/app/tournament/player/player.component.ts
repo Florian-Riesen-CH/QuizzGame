@@ -12,7 +12,7 @@ export class PlayerComponent {
 
  
   players: Player[] = [];
-  constructor(private cookieService: CookieService, private db: AngularFireDatabase) {
+  constructor(private db: AngularFireDatabase) {
     
     
   }
