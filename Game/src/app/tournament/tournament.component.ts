@@ -26,7 +26,10 @@ export class TournamentComponent {
   }
 
   GetData(newItem: Team[]){
-    this.teams = [...newItem];
+    this.refTeams.remove();
+    newItem.forEach(element => {
+      this.refTeams.push(element);
+    });
   }
   genereateTeam(): void{
     this.teams = [];

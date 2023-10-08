@@ -8,3 +8,11 @@ export interface Team {
     score: number;
     position: number;
 }
+
+export interface Match {
+    id:number;
+    teamA: Team;
+    teamB: Team;
+    score: number;
+    winningTeam: Team;
+}
