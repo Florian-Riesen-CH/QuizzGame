@@ -8,7 +8,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { MatchesComponent } from './matches/matches.component';
 import { TournamentComponent } from './tournament/tournament.component'
 import { PlayerComponent } from './tournament/player/player.component';
-import { RankingComponent } from './tournament/ranking/ranking.component';
+import { RankingComponent } from './ranking/ranking.component';
 import { TeamComponent } from './tournament/team/team.component';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireDatabaseModule } from '@angular/fire/compat/database';
@@ -16,6 +16,7 @@ import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
 import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment';
 import { AdminComponent } from './admin/admin.component';
+import { OrderComponent } from './order/order.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { AdminComponent } from './admin/admin.component';
     RankingComponent,
     TeamComponent,
     AdminComponent,
+    OrderComponent,
   ],
   imports: [
     BrowserModule,

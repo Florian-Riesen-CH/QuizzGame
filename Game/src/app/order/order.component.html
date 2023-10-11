@@ -1,0 +1,14 @@
+<h2>Ordre de jeu</h2>
+<div *ngFor="let team of teams">
+    <div class="teamContainer" type="button"  [ngClass]="{'playerEliminated': team.score <= 0}">
+        <div class="badge">{{team.id}}</div>
+        <div class="name" >
+            <a *ngFor="let player of team.players">
+                {{player.name}}
+            </a>
+        </div>
+        <div class="badgeOpp">{{team.score}}</div>
+      </div> 
+    
+</div>
+    

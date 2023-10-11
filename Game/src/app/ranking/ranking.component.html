@@ -1,6 +1,6 @@
 <h2>Classement</h2>
-<div *ngFor="let team of rankingList">
-    <div class="teamContainer" type="button">
+<div *ngFor="let team of teams">
+    <div class="teamContainer" type="button" [ngClass]="{'playerEliminated': team.score <= 0}">
         <div class="badge">{{team.position}}</div>
         <div class="name">
             <a *ngFor="let player of team.players">

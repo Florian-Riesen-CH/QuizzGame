@@ -11,17 +11,23 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 export class TournamentComponent {
   players: Player[] = [];
   teams: Team[] = [];
+  teamA!: Team;
   constructor(private db: AngularFireDatabase){
   }
 
   refPlayer = this.db.list<Player>("players");
   refTeams = this.db.list<Team>("teams");
+  refTeamA = this.db.object<Team>("teamA");
+  refTeamB = this.db.object<Team>("teamB");
   ngOnInit():void{
     this.refPlayer.valueChanges().subscribe((data) =>{
       this.players = data as Player[];
     }) 
     this.refTeams.valueChanges().subscribe((data) =>{
       this.teams = data as Team[];
+    }) 
+    this.refTeamA.valueChanges().subscribe((data) =>{
+      this.teamA = data as Team;
     }) 
   }
 
@@ -61,6 +67,10 @@ export class TournamentComponent {
     this.teams.forEach(element => {
       this.refTeams.push(element);
     });
+
+    this.teamA = this.teams.filter(x=>x.id == 1)[0];
+    this.refTeamA.set(this.teamA);
+    this.refTeamB.remove();
     //this.cookieService.set('teamsList', JSON.stringify(this.teams));
   }
   shuffleArray(array: Player[]):Player[] {

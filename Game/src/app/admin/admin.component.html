@@ -1,16 +1,66 @@
 <div class="container">    
     <div class="row">
-        <div class="col-sm-4">
+        <div class="col-sm-3">
+            <app-ranking [teams]="teams"></app-ranking>
+        </div>
+        <div class="col-sm-2 text-cente alignCenter">
+           <div *ngFor="let playersA of teamA?.players">
+            <h1 class="display-4">{{playersA.name}}</h1>
+           </div>
             
+        </div>
+        <div class="col-sm-2 text-center alignCenter">
+            <img class="imageSize text-center imageSize" src="/assets/Street_Fighter_VS_logo.png" alt="image">
+        </div>
+        <div class="col-sm-2 text-cente alignCenter">
+            <div *ngFor="let playersB of teamB?.players">
+                <h1 class="display-4 text-end">{{playersB.name}}</h1>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <app-order></app-order>
         </div>
     </div>
 </div>
+<hr>
+<div class="container">      
+    <div class="row"> 
+        <div class="col-sm-2 offset-3">
+            <select class="form-select " aria-label="Default select example" #ref (change)="selectPtn(ref.value)">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="20">20</option>
+                <option value="25">25</option>
+                <option value="30">30</option>
+                <option value="35">35</option>
+                <option value="40">40</option>
+                <option value="45">45</option>
+                <option value="50">50</option>
+                <option value="55">55</option>
+                <option value="60">60</option>
+                <option value="65">65</option>
+                <option value="70">70</option>
+                <option value="75">75</option>
+                <option value="80">80</option>
+            </select>
+        </div>
+        <div class="col-sm-5">
+            <button type="button" class="btn btn-primary" (click)="setWinningTeamA()">Equipe A</button>
+            <button type="button" class="btn btn-warning" (click)="setDrow()">Drow</button>
+            <button type="button" class="btn btn-danger" (click)="setWinningTeamB()">Equipe B</button>
+        </div>
+        <div class="col-sm-3">
+    </div>
+</div>
+
+
 
 <hr>
 <div class="container">    
     <div class="row">
-        <div class="col-sm-4" *ngFor="let team of teams; index as i">
-            <table  class="table table-borderless">
+        <div class="col-sm-3" *ngFor="let team of teams; index as i">
+            <table class="table table-borderless" (click)="team.score>0 && teamA.id != team.id && defineTeamB(team.id)">
                 <tbody>
                     <tr *ngFor="let player of team.players">
                         <td [ngClass]="{'playerIngame': team.score > 0,'playerEliminated': team.score <= 0}">

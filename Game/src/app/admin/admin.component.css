@@ -36,3 +36,10 @@
   .scoreEliminated{
     background-color: #3b3e40;
   }
+  .alignCenter{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .imageSize{
+    height: 5em;
+  }

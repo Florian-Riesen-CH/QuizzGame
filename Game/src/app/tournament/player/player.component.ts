@@ -35,7 +35,6 @@ export class PlayerComponent {
   ngOnInit():void{
     const ref = this.db.list("players");
     ref.valueChanges().subscribe((data) =>{
-      console.log(data);
       this.players = data as Player[];
     }) 
   }
