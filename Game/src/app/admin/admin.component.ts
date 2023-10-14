@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Team } from '../player';
+import { Match, MatchesHistory, Team } from '../player';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Component({
@@ -9,6 +9,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 })
 export class AdminComponent {
   teams: Team[] = [];
+  matchesHistory: MatchesHistory[] = [];
   teamA!: Team;
   teamB!: Team;
   numberPoint: number = 5;
@@ -19,6 +20,7 @@ export class AdminComponent {
   refTeams = this.db.list<Team>("teams");
   refTeamA = this.db.object<Team>("teamA");
   refTeamB = this.db.object<Team>("teamB");
+  refMatchesHistory = this.db.list<MatchesHistory>("matchesHistory");
   ngOnInit():void{
     this.refTeams.valueChanges().subscribe((data) =>{
       this.teams = data as Team[];
@@ -28,6 +30,9 @@ export class AdminComponent {
     }) 
     this.refTeamB.valueChanges().subscribe((data) =>{
         this.teamB = data as Team;
+    }) 
+    this.refMatchesHistory.valueChanges().subscribe((data) =>{
+        this.matchesHistory = data as MatchesHistory[];
     }) 
   }
 
@@ -50,6 +55,7 @@ export class AdminComponent {
 
     this.teams.filter(x=>x.id==this.teamA.id)[0].score += removedScore;
     this.teams.filter(x=>x.id==this.teamB.id)[0].score -= removedScore;
+    this.refMatchesHistory.push({winningTeam: this.teamA, LoosingTeam: this.teamB, score: removedScore})
     this.updateTeamList();
     this.generateNextMatch();
   }
@@ -58,6 +64,7 @@ export class AdminComponent {
     let removedScore: number = loosingTeamScore > this.numberPoint ? this.numberPoint : loosingTeamScore;
     this.teams.filter(x=>x.id==this.teamA.id)[0].score -= removedScore;
     this.teams.filter(x=>x.id==this.teamB.id)[0].score += removedScore;
+    this.refMatchesHistory.push({winningTeam: this.teamB, LoosingTeam: this.teamA, score: removedScore})
     this.updateTeamList();
     this.generateNextMatch();
   }

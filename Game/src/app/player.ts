@@ -16,3 +16,9 @@ export interface Match {
     score: number;
     winningTeam: Team;
 }
+
+export interface MatchesHistory {
+    winningTeam: Team;
+    LoosingTeam: Team;
+    score: number;
+}

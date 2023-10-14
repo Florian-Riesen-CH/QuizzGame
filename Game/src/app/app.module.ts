@@ -17,6 +17,7 @@ import { AngularFireStorageModule } from '@angular/fire/compat/storage';
 import { environment } from '../environments/environment';
 import { AdminComponent } from './admin/admin.component';
 import { OrderComponent } from './order/order.component';
+import { MatchesHistoryComponent } from './matches-history/matches-history.component';
 
 @NgModule({
   declarations: [
@@ -29,6 +30,7 @@ import { OrderComponent } from './order/order.component';
     TeamComponent,
     AdminComponent,
     OrderComponent,
+    MatchesHistoryComponent,
   ],
   imports: [
     BrowserModule,

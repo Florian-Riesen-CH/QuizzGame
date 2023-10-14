@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { Player, Team } from '../player';
+import { MatchesHistory, Player, Team } from '../player';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 
 @Component({
@@ -15,6 +15,7 @@ export class TournamentComponent {
   constructor(private db: AngularFireDatabase){
   }
 
+  refMatchesHistory = this.db.list<MatchesHistory>("matchesHistory");
   refPlayer = this.db.list<Player>("players");
   refTeams = this.db.list<Team>("teams");
   refTeamA = this.db.object<Team>("teamA");
@@ -29,6 +30,7 @@ export class TournamentComponent {
     this.refTeamA.valueChanges().subscribe((data) =>{
       this.teamA = data as Team;
     }) 
+    
   }
 
   GetData(newItem: Team[]){
@@ -71,6 +73,7 @@ export class TournamentComponent {
     this.teamA = this.teams.filter(x=>x.id == 1)[0];
     this.refTeamA.set(this.teamA);
     this.refTeamB.remove();
+    this.refMatchesHistory.remove();
     //this.cookieService.set('teamsList', JSON.stringify(this.teams));
   }
   shuffleArray(array: Player[]):Player[] {

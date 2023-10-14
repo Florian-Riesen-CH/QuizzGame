@@ -3,16 +3,15 @@
         <div class="col-sm-3">
             <app-ranking [teams]="teams"></app-ranking>
         </div>
-        <div class="col-sm-2 text-cente alignCenter">
+        <div class="col-sm-2 text-cente alignCenter" (click)="setWinningTeamA()">
            <div *ngFor="let playersA of teamA?.players">
             <h1 class="display-4">{{playersA.name}}</h1>
            </div>
-            
         </div>
         <div class="col-sm-2 text-center alignCenter">
             <img class="imageSize text-center imageSize" src="/assets/Street_Fighter_VS_logo.png" alt="image">
         </div>
-        <div class="col-sm-2 text-cente alignCenter">
+        <div class="col-sm-2 text-cente alignCenter" (click)="setWinningTeamB()">
             <div *ngFor="let playersB of teamB?.players">
                 <h1 class="display-4 text-end">{{playersB.name}}</h1>
             </div>
@@ -22,10 +21,17 @@
         </div>
     </div>
 </div>
+<div class="container">    
+    <div class="row">
+         <div class="col-sm-2 offset-5 text-center alignCenter">
+             <button type="button" class="btn btn-warning" (click)="setDrow()">Drow</button>
+         </div>
+    </div>
+</div>
 <hr>
 <div class="container">      
     <div class="row"> 
-        <div class="col-sm-2 offset-3">
+        <div class="col-sm-2 offset-5">
             <select class="form-select " aria-label="Default select example" #ref (change)="selectPtn(ref.value)">
                 <option value="5">5</option>
                 <option value="10">10</option>
@@ -45,12 +51,6 @@
                 <option value="80">80</option>
             </select>
         </div>
-        <div class="col-sm-5">
-            <button type="button" class="btn btn-primary" (click)="setWinningTeamA()">Equipe A</button>
-            <button type="button" class="btn btn-warning" (click)="setDrow()">Drow</button>
-            <button type="button" class="btn btn-danger" (click)="setWinningTeamB()">Equipe B</button>
-        </div>
-        <div class="col-sm-3">
     </div>
 </div>
 
@@ -75,3 +75,5 @@
         </div>
     </div>
 </div>
+<hr>
+<app-matches-history></app-matches-history>

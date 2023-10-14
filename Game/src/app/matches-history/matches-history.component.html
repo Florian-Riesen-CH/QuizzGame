@@ -1,0 +1,17 @@
+<div class="container">    
+    <div class="row" *ngFor="let matchHistory of matchesHistory">
+        <div class="col-sm-3 text-center">
+            <a *ngFor="let playerA of matchHistory.winningTeam.players">{{playerA.name + " "}}</a>
+        </div>
+        <div class="col-sm-3 text-center">
+            <a>a volé à</a>
+        </div>
+        <div class="col-sm-3 text-center">
+            <a *ngFor="let playerB of matchHistory.LoosingTeam.players">{{playerB.name + " "}}</a>
+        </div>
+        <div class="col-sm-3 text-center">
+            {{matchHistory.score + " points"}}
+        </div>
+        
+    </div>
+</div>
