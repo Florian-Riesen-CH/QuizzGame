@@ -1,10 +1,61 @@
+<br>
 <div class="container">
     <div class="row">
-        <div class="col-sm-8">
-            
-        </div>
-        <div class="col-sm-4">
-            
+        <div class="col-sm-3"><app-ranking [teams]="teams"></app-ranking></div>
+        <div class="col-sm-3 offset-sm-1 text-cente alignCenter">
+            <div *ngFor="let playersA of teamA?.players">
+             <h1 class="display-1">{{playersA.name}}</h1>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    {{teamA.score - numberPoint}}
+                </div>
+                <div class="col-sm-3">
+                    {{teamA.score + 0}}
+                </div>
+                <div class="col-sm-3">
+                    {{teamA.score  + numberPoint}}
+                </div>
+            </div>
+         </div>
+         <div class="col-sm-2 text-center alignCenter">
+             <img class="imageSize text-center imageSize" src="/assets/Street_Fighter_VS_logo.png" alt="image">
+         </div>
+         <div class="col-sm-3 text-cente alignCenter">
+             <div *ngFor="let playersB of teamB.players">
+                 <h1 class="display-1 text-end">{{playersB.name}}</h1>
+             </div>
+             <div class="row">
+                <div class="col-sm-3 offset-sm-3 text-end">
+                    {{teamB.score - numberPoint}}
+                </div>
+                <div class="col-sm-3  text-end">
+                    {{teamB.score + 0}}
+                </div>
+                <div class="col-sm-3 text-end">
+                    {{teamB.score  + numberPoint}}
+                </div>
+            </div>
+         </div>
+    </div>
+    
+   
+</div>
+<br><hr><br>
+<div class="container">    
+    <div class="row">
+        <div class="col-sm-3" *ngFor="let team of teams; index as i">
+            <table class="table table-borderless">
+                <tbody>
+                    <tr *ngFor="let player of team.players">
+                        <td [ngClass]="{'playerIngame': team.score > 0,'playerEliminated': team.score <= 0}">
+                            {{player.name}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="badgeScore" [ngClass]="{'scoreIngame': team.score > 0,'scoreEliminated': team.score <= 0}">Nombre de point:  {{team.score}}</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     </div>
-</div>

@@ -2,7 +2,7 @@ import { Component, Input, OnChanges,SimpleChanges,ChangeDetectionStrategy, Outp
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { OutletContext } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
-import { Team } from 'src/app/player';
+import { Team } from '../player';
 
 @Component({
   selector: 'app-ranking',

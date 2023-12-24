@@ -1,0 +1,45 @@
+
+.badgeScore{
+    color: white;
+    padding: 0.8em 0.7em 1em 0.7em;
+    font-size: 15px;
+    border-radius: 0px 0px 4px 4px;
+    text-align: right;
+  }
+
+  .teams .name{
+    flex: 1;
+    cursor: pointer;
+    position: relative;
+    left: 0;
+    background-color: #EEE;
+    padding: .5em;
+    display: flex;
+    align-items: stretch;
+    font-size: 1.2rem;
+    width: 10em;
+  }
+
+  .playerIngame{
+    background-color: #b8dadd;
+  }
+
+  .playerEliminated{
+    background-color: #898989;
+
+  }
+
+  .scoreIngame{
+    background-color: #405061;
+  }
+
+  .scoreEliminated{
+    background-color: #3b3e40;
+  }
+  .alignCenter{
+    margin-top: auto;
+    margin-bottom: auto;
+  }
+  .imageSize{
+    height: 5em;
+  }

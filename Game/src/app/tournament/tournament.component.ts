@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
-import { MatchesHistory, Player, Team } from '../player';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { MatchesHistory, Player, Team } from '../player';
 
 @Component({
   selector: 'app-tournament',
@@ -57,7 +57,7 @@ export class TournamentComponent {
   
       teamPlayers.push(randomPlayer[num + 1]);
   
-      let team: Team = {id: maxId + 1, players: teamPlayers, score: 50, position:1};
+      let team: Team = {id: maxId + 1, players: teamPlayers, score: 60, position:1};
       this.teams.push(team);
     }
     // Si le nombre de joueurs est impair, ajoutez le dernier joueur à une équipe existante.

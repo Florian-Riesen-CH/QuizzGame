@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { Match, MatchesHistory, Team } from '../player';
+
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { MatchesHistory, Team } from '../player';
 
 @Component({
   selector: 'app-admin',
@@ -10,13 +11,14 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 export class AdminComponent {
   teams: Team[] = [];
   matchesHistory: MatchesHistory[] = [];
-  teamA!: Team;
-  teamB!: Team;
-  numberPoint: number = 5;
+  teamA: Team;
+  teamB: Team;
+  numberPoint: number = 0;
   
   constructor(private db: AngularFireDatabase){
   }
 
+  refScore = this.db.object<number>("score");
   refTeams = this.db.list<Team>("teams");
   refTeamA = this.db.object<Team>("teamA");
   refTeamB = this.db.object<Team>("teamB");
@@ -34,6 +36,10 @@ export class AdminComponent {
     this.refMatchesHistory.valueChanges().subscribe((data) =>{
         this.matchesHistory = data as MatchesHistory[];
     }) 
+    this.refScore.valueChanges().subscribe((data) =>{
+      console.log(data);
+      this.numberPoint = data as number;
+  }) 
   }
 
   defineTeamB(teamId:number){
@@ -76,6 +82,7 @@ export class AdminComponent {
   }
   selectPtn(number:string){
     this.numberPoint = Number(number);
+    this.refScore.set(this.numberPoint);
   }
   generateNextMatch(){
     this.defineTeamA(this.getNextTeam(this.teamA.id))

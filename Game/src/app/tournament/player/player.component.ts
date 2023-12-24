@@ -1,7 +1,7 @@
 import { Component, OnInit, Output, EventEmitter, Input  } from '@angular/core';
-import { Player, Team } from '../../player';
 import { CookieService } from 'ngx-cookie-service';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { Player } from 'src/app/player';
 
 @Component({
   selector: 'app-player',

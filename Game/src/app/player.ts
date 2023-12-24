@@ -1,15 +1,14 @@
-export interface Player {
+export class Player {
     id: number;
     name: string;
 }
-export interface Team {
+export class Team {
     id:number;
     players: Player[];
     score: number;
     position: number;
 }
-
-export interface Match {
+export class Match {
     id:number;
     teamA: Team;
     teamB: Team;
@@ -17,7 +16,7 @@ export interface Match {
     winningTeam: Team;
 }
 
-export interface MatchesHistory {
+export class MatchesHistory {
     winningTeam: Team;
     LoosingTeam: Team;
     score: number;

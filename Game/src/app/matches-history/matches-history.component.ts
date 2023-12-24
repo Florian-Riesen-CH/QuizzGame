@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MatchesHistory } from '../player';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
+import { MatchesHistory } from '../player';
 
 @Component({
   selector: 'app-matches-history',

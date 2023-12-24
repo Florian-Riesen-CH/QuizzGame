@@ -32,7 +32,7 @@
 <div class="container">      
     <div class="row"> 
         <div class="col-sm-2 offset-5">
-            <select class="form-select " aria-label="Default select example" #ref (change)="selectPtn(ref.value)">
+            <select class="form-select " aria-label="Default select example" #ref (change)="selectPtn(ref.value)" [value] = "numberPoint">
                 <option value="5">5</option>
                 <option value="10">10</option>
                 <option value="15">15</option>

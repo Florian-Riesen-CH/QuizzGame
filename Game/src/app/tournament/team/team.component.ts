@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-import { Player, Team } from '../../player';
 import { CookieService } from 'ngx-cookie-service';
+import { Team } from 'src/app/player';
 
 @Component({
   selector: 'app-team',
